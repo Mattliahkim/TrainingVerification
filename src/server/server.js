@@ -38,8 +38,9 @@ const Question =mongoose.model('Question', questionSchema);
     
 async function main() {
   // we'll add code here soon
-  //mongodb://localhost:27017
-  const uri = process.env.DBURI
+  //mongodb://localhost:27017\
+  //DBURI
+  const uri = process.env.MONGODB_URI
   //const client = new MongoClient(uri);
   try {
     await mongoose.connect(uri);

@@ -16,6 +16,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 const blogSchema=new mongoose.Schema({
   email:  String, 

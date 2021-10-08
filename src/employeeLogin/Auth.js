@@ -13,7 +13,7 @@ class LoginPage extends Component {
 
   callAPI(){
 
-    fetch("http://localhost:8000/employeelogin")
+    fetch("http://localhost:8000/api/employeelogin")
     .then((response) => {
     console.log(response.text().then(response => this.setState({apiResponse: response}),console.log("oops")));
 })
@@ -28,7 +28,7 @@ class LoginPage extends Component {
       .catch(err => console.log(err));
   }
   callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
+    const response = await fetch('/api/express_backend');
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -48,7 +48,7 @@ class LoginPage extends Component {
           
         <header className="App-header">
           <h1 className="App-title">Login</h1>
-          <form action="/auth/google2" method="POST">
+          <form action="/api/auth/google2" method="POST">
               <div>
           <label for = "name">Name</label>
           <input type="text" id="name" name="name" required></input>

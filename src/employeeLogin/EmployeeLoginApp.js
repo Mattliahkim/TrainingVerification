@@ -13,7 +13,7 @@ class EmployeeLoginApp extends Component {
 
   callAPI(){
 
-    fetch("http://localhost:5000/login")
+    fetch("http://localhost:5000/api/login")
     .then((response) => {
     console.log(response.text().then(response => this.setState({apiResponse: response}),console.log("oops")));
 })
@@ -28,7 +28,7 @@ class EmployeeLoginApp extends Component {
       .catch(err => console.log(err));
   }
   callBackendAPI = async () => {
-    const response = await fetch('/login');
+    const response = await fetch('/api/login');
     const body = await response.json();
 
     if (response.status !== 200) {

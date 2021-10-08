@@ -13,7 +13,7 @@ class QuizPage extends Component {
 
   callAPI(){
 
-    fetch("http://localhost:5000/login")
+    fetch("http://localhost:5000/api/login")
     .then((response) => {
     console.log(response.text().then(response => this.setState({apiResponse: response}),console.log("oops")));
 })
@@ -28,7 +28,7 @@ class QuizPage extends Component {
       .catch(err => console.log(err));
   }
   callBackendAPI = async () => {
-    const response = await fetch('/login');
+    const response = await fetch('/api/login');
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -46,7 +46,7 @@ console.log(this.state.apiResponse);
       if(this.state.apiResponse==="Hello"){
         return(
         <div className="Quiz">
-          <form action="/quizAnswers1" className="QuizQ1" method="POST">
+          <form action="/api/quizAnswers1" className="QuizQ1" method="POST">
             <div>
               <h1 className="QuizQ1">Q1: Word that is similar to I.</h1>
               <input type="radio" name="Quiz1" questionNum="1" answer="A"></input>

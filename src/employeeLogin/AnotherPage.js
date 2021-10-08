@@ -9,7 +9,7 @@ export default function AnotherPager() {
     setArtist(['Fleetwood Mac'])
   }
   useEffect(() => {
-    fetch("http://localhost:5000/another")
+    fetch("http://localhost:5000/api/another")
      .then(resp => resp.json())
      .then(meme => this.setSong(meme)
      )

@@ -53,6 +53,4 @@
     ]
   },
   "homepage": "https://evening-peak-09339.herokuapp.com"
-  ,
-  "proxy": "http://localhost:5000/"
 }

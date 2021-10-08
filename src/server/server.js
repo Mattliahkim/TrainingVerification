@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 //const mysql = require('mysql');
 const dovenv = require('dotenv').config();
 const cors = require('cors');
@@ -16,10 +17,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('*', (req, res) => {
+  res.sendFile('index.html', {root: '../../public'});
 });
 
 const blogSchema=new mongoose.Schema({
@@ -81,26 +82,27 @@ app.listen(port, () => {
 });
 
 const message = "Hello";
-app.get('/employeelogin', (req, res) => {
+app.get('/api/employeelogin', (req, res) => {
   console.log("eeee");
       res.send(message);
       return
 });
 
-app.get('/login', (req, res) => { //Line 9
+app.get('/api/login', (req, res) => { //Line 9
+  console.log("Hi")
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
   return
 });
 
-app.get('/another', (req, res) => { //Line 9
+app.get('/api/another', (req, res) => { //Line 9
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
   return
 });
 
-app.get('/auth/google',
+app.get('/api/auth/google',
   passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }));
 
-app.post('/auth/google2', (req, res) => { //Line 9
+app.post('/api/auth/google2', (req, res) => { //Line 9
   try {
     console.log(req.body.email)
     //var user = new Blog({ email: 'blah@gmail.com', password:'1' });
@@ -130,7 +132,7 @@ app.post('/auth/google2', (req, res) => { //Line 9
 });
 
 
-app.post('/quizAnswers1', (req, res) => { //Line 9
+app.post('/api/quizAnswers1', (req, res) => { //Line 9
   console.log(req.body.name)
   const query  = Question.where({ quizName: req.body.name, questionNum:req.body.questionNum, answer:req.body.answer });
   query.findOne(function (err, blog) {
@@ -147,7 +149,7 @@ app.post('/quizAnswers1', (req, res) => { //Line 9
   return
   })
 });
-app.get('/auth/google/callback', 
+app.get('/api/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');

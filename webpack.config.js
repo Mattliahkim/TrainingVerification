@@ -8,4 +8,8 @@ module.exports = {
     },
     extensions: ['.jsx', '.js', '.scss', '.json'],
   },
+  devServer: {
+    compress: true,
+    public: 'store-client-nestroia1.c9users.io' // That solved it
+  },
 };

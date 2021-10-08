@@ -10,6 +10,7 @@ module.exports = {
   },
   devServer: {
     compress: true,
-    public: 'https://evening-peak-09339.herokuapp.com/'
+    disableHostCheck: true,
+    //public: 'https://evening-peak-09339.herokuapp.com/'
   },
 };
